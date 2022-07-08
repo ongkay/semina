@@ -7,13 +7,14 @@ const app = express();
 
 // import router categories
 const categoriesRouter = require('./app/api/v1/categories/router');
+const imagesRouter = require('./app/api/v1/images/router');
+
+// membuat variabel v1
+const v1 = '/api/v1/cms';
 
 // middlewares
 const notFoundMiddleware = require('./app/middlewares/not-found');
 const handleErrorMiddleware = require('./app/middlewares/handler-error');
-
-// membuat variabel v1
-const v1 = '/api/v1/cms';
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -30,10 +31,10 @@ app.get('/', (req, res) => {
 
 // gunakan categories router
 app.use(v1, categoriesRouter);
+app.use(v1, imagesRouter);
 
 // middlewares
 app.use(notFoundMiddleware);
 app.use(handleErrorMiddleware);
-
 
 module.exports = app;
