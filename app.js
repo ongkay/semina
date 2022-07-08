@@ -8,6 +8,7 @@ const app = express();
 // import router categories
 const categoriesRouter = require('./app/api/v1/categories/router');
 const imagesRouter = require('./app/api/v1/images/router');
+const talentsRouter = require('./app/api/v1/talents/router')
 
 // membuat variabel v1
 const v1 = '/api/v1/cms';
@@ -32,6 +33,7 @@ app.get('/', (req, res) => {
 // gunakan categories router
 app.use(v1, categoriesRouter);
 app.use(v1, imagesRouter);
+app.use(v1, talentsRouter);
 
 // middlewares
 app.use(notFoundMiddleware);
